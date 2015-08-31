@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="microstrain_3dm_gx3_45" name="imu_3dm_node" type="imu_driver" output="screen">
+    <param name="rate" value="20.0"/>
+    <param name="linear_acceleration_stdev" value="0.25"/> <!-- 0.098 -->
+    <param name="orientation_stdev" value="0.5"/> <!--0.035 -->
+    <param name="angular_velocity_stdev" value="0.5"/> <!-- 0.012 -->
+  </node>
+
+</launch>
