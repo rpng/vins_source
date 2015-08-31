@@ -1,0 +1,12 @@
+[submodule "geographic_info"]
+	path = geographic_info
+	url = ./geographic_info/
+[submodule "microstrain_3dm_gx3_45"]
+	path = microstrain_3dm_gx3_45
+	url = ./microstrain_3dm_gx3_45/
+[submodule "pointgrey_camera_driver"]
+	path = pointgrey_camera_driver
+	url = ./pointgrey_camera_driver/
+[submodule "unique_identifier"]
+	path = unique_identifier
+	url = ./unique_identifier/
