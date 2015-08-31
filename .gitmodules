@@ -10,3 +10,6 @@
 [submodule "unique_identifier"]
 	path = unique_identifier
 	url = https://github.com/udrg/unique_identifier
+[submodule "microstrain_3dmgx2_imu"]
+	path = microstrain_3dmgx2_imu
+	url = https://github.com/udrg/microstrain_3dmgx2_imu.git
