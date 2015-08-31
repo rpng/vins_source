@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <name>microstrain_3dm_gx3_45</name>
+  <version>0.0.2</version>
+  <description>Driver for Microstrain 3DM-GX3-45 AHRS.</description>
+  <maintainer email="imaterna@fit.vutbr.cz">Zdenek Materna</maintainer>
+  <url>https://github.com/ZdenekM/microstrain_3dm_gx3_45</url>
+  <license>LGPL</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>geodesy</build_depend>
+  <build_depend>geographic_msgs</build_depend>
+  
+  <run_depend>roscpp</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>geodesy</run_depend>
+  <run_depend>geographic_msgs</run_depend>
+
+</package>

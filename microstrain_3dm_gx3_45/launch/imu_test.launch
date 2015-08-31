@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+
+  <!-- Transform /map into /local_map frame. Rviz cannot handle large
+       UTM coordinates, they require double precision, so we visualize
+       using the /local_map.  Start the transform early to minimize TF
+       errors in rviz.
+  -->
+  <!--node pkg="tf" type="static_transform_publisher" name="local_map_tf"
+        args="616165 5453902 0 0 0 0 1 map imu 100" /-->
+        
+        
+  <include file="$(find microstrain_3dm_gx3_45)/launch/imu.launch" />
+
+      
+      
+</launch>
