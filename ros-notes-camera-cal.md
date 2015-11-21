@@ -6,7 +6,7 @@ First download and install the kalibr package. We are using ros indigo on ubuntu
 
 The target that we will be using it the [aprilgrid](https://github.com/udrg/kalibr/wiki/calibration-targets#a-aprilgrid). This has been printed to size at the universities printing center. We will use the default yaml file for the calibration.
 
-We will be using the ROS [point grey camera driver](https://github.com/udrg/pointgrey_camera_driver). We will be launching the camera and specifying to use a low FPS. This low FPS will allow use to gather less data, so we can run the calibration quicker.
+We will be using the ROS [point grey camera driver](https://github.com/udrg/pointgrey_camera_driver). We will be launching the camera and specifying to use a low FPS. This low FPS will allow use to gather less data, so we can run the calibration quicker. Note that it can be calibrated at higher fps but the calibration process will take far longer then needed. We are looking for unique orientations of our target.
 
 Our launch file for calibration names calibration-kalibr-static.launch:
 ```xml
