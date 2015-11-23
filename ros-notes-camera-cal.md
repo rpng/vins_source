@@ -4,7 +4,7 @@ We are going to be using the kalibr package to do all our calibration. In this e
 
 First download and install the kalibr package (here we started a new workspace named kalibr_workspace apart from vins_workspace for vins_source, to install kalibr). We are using ros indigo on ubuntu 14.04 LTS. We will be following the [multi-camera calibration](https://github.com/udrg/kalibr/wiki/multiple-camera-calibration) tutorial. We need to record a ros bag of our camera feed. It is important to note that we will keep the "camera system" stationary. The camera will be placed on a stationary surface, and the grid moved in front of it.
 
-The target that we will be using is the [aprilgrid](https://github.com/udrg/kalibr/wiki/calibration-targets#a-aprilgrid). This has been printed to size at the universities printing center. We will use the default yaml file (here is the "april_6x6_80x80cm.yaml" corresponding to "Aprilgrid 6x6 0.8x0.8 m", and put it into "kalibr_workspace") for the calibration.
+The target that we will be using is the [aprilgrid](https://github.com/udrg/kalibr/wiki/calibration-targets#a-aprilgrid). This has been printed to size at the universities printing center. We will use the default yaml file (here is the "april_6x6_80x80cm.yaml" corresponding to "Aprilgrid 6x6 0.8x0.8 m", and put it into kalibr_workspace) for the calibration.
 
 We will be using the ROS [point grey camera driver](https://github.com/udrg/pointgrey_camera_driver). We will be launching the camera and specifying to use a low FPS. This low FPS will allow use to gather less data, so we can run the calibration quicker. Note that it can be calibrated at higher fps but the calibration process will take far longer then needed. We are looking for unique orientations of our target.
 
@@ -41,19 +41,19 @@ In a separate window, run roscore:
 $roscore
 ```
 
-In a separate window, run our launch file (here is in vins_workspace, and maybe need [root] authority to run because we need to access serial port):
+In a separate window, run our launch file (here is under vins_workspace, and maybe need root authority (sudo su first) to run because we need to access serial port):
 ```
 $roslaunch /path/to/calibration-kalibr-static.launch
 ```
 
-In a separate window run our rosbag recorder (here is in kalibr_workspace, as it will be convenient to read the .bag file in next step):
+In a separate window run our rosbag recorder (here is under kalibr_workspace, as it will be convenient to read the .bag file in next step):
 ```
 $rosbag record -O <output-file> <topics-to-record>
 $rosbag record -O calibration_static.bag /camera/image_raw
 ```
 After moving the grid in front of the camera for an enough time, we end rosbag and get the .bag file in the workspace (here until ending rosbag, "calibration_static" will be a .active file).
 
-We will now run the kalibr suite for muli-camera calibration to get our intrinsic calibration matrix (here is in kalibr_workspace). Kalibr will generate multiple files that show both the error and the properties of the values found. After running the program, we can use this camera calibration to find the IMU to camera matrix.
+We will now run the kalibr suite for muli-camera calibration to get our intrinsic calibration matrix (here is under kalibr_workspace). Kalibr will generate multiple files that show both the error and the properties of the values found. After running the program, we can use this camera calibration to find the IMU to camera matrix.
 
 ```
 $kalibr_calibrate_cameras --bag [filename.bag] --topics [TOPIC_0 ... TOPIC_N] --models [MODEL_0 ... MODEL_N] --target [target.yaml]
