@@ -41,6 +41,7 @@ In a separate window, run roscore:
 $roscore
 ```
 
+
 In a separate window, run our launch file (here is in vins_workspace, and maybe need [root] authority to run because we need to access serial port):
 ```
 $roslaunch /path/to/calibration-kalibr-static.launch
@@ -54,6 +55,7 @@ $rosbag record -O calibration_static.bag /camera/image_raw
 After moving the grid in front of the camera for an enough time, we end rosbag and get the .bag file in the workspace (here until ending rosbag, "calibration_static" will be a .active file).
 
 We will now run the kalibr suite for muli-camera calibration to get our intrinsic calibration matrix (here is in kalibr_workspace). Kalibr will generate multiple files that show both the error and the properties of the values found. After running the program, we can use this camera calibration to find the IMU to camera matrix.
+
 
 ```
 $kalibr_calibrate_cameras --bag [filename.bag] --topics [TOPIC_0 ... TOPIC_N] --models [MODEL_0 ... MODEL_N] --target [target.yaml]
