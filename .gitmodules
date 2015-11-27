@@ -13,3 +13,6 @@
 [submodule "microstrain_3dmgx2_imu"]
 	path = microstrain_3dmgx2_imu
 	url = https://github.com/udrg/microstrain_3dmgx2_imu.git
+[submodule "microstrain_3dm_gx3_35"]
+	path = microstrain_3dm_gx3_35
+	url = https://github.com/udrg/microstrain_3dm_gx3_35.git
