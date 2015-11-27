@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <launch>
 
   <node pkg="microstrain_3dm_gx3_45" name="imu_3dm_node" type="imu_driver" output="screen">

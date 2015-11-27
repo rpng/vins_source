@@ -25,7 +25,8 @@
   <node pkg="microstrain_comm" type="microstrain_comm_node" name="microstrain_comm_node" output="screen">
     <param name="rate" value="low" />
     <param name="verbose" value="falsed" />
-    <param name="quiet" value="true" />
+    <param name="debug" value="true" />
+    <param name="init" value="no" />
   </node>
 
 </launch>
