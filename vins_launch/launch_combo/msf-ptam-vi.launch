@@ -17,7 +17,7 @@
       <rosparam file="$(find vins_launch)/config/msf/pose_fix_vi.yaml"/>
   </node>
 
-  <!-- <node pkg="rosservice" type="rosservice" name="initialize" args="call -wait /msf_pose_sensor/pose_sensor/initialize_msf_scale 1"/> -->
+  <node pkg="rosservice" type="rosservice" name="initialize" args="call --wait /msf_pose_sensor/pose_sensor/initialize_msf_scale 1"/>
 
   <!-- Launch rvis so we can see what is happening -->
   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find vins_launch)/rvis/ptam.rviz" output="log"/>
