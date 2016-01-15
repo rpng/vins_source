@@ -16,3 +16,9 @@
 [submodule "microstrain_3dm_gx3_35"]
 	path = microstrain_3dm_gx3_35
 	url = https://github.com/udrg/microstrain_3dm_gx3_35.git
+[submodule "visensor_node"]
+	path = visensor_node
+	url = https://github.com/rpng/visensor_node
+[submodule "libvisensor"]
+	path = libvisensor
+	url = https://github.com/rpng/libvisensor
