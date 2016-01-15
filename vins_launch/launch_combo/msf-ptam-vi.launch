@@ -1,0 +1,25 @@
+<launch>
+
+  <!-- Launch pointgrey and microstrain drivers -->
+  <include file="$(find vins_launch)/launch/vi-sensor.launch" />
+
+  <!-- We are doing ptam on the vision -->
+  <node name="ptam" pkg="ptam" type="ptam" clear_params="true" output="screen">
+    <remap from="image" to="/cam0/image_raw" />
+    <remap from="pose" to="pose"/>
+    <rosparam file="$(find vins_launch)/config/ptam/fix_params_pg.yaml"/>
+  </node>
+
+  <!-- Start up the msf fusion -->
+  <node name="msf_pose_sensor" pkg="msf_updates" type="pose_sensor" clear_params="true" output="screen">
+      <remap from="msf_core/imu_state_input" to="/imu0"/>
+      <remap from="msf_updates/pose_with_covariance_input" to="/vslam/pose" />
+      <rosparam file="$(find vins_launch)/config/msf/pose_fix_vi.yaml"/>
+  </node>
+  <node pkg="rosservice" type="rosservice" name="initialize" args="call --wait /msf_pose_sensor/pose_sensor/initialize_msf_scale 1"/>
+
+  <!-- Launch rvis so we can see what is happening -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find vins_launch)/rvis/ptam.rviz" output="log"/>
+
+</launch>
+

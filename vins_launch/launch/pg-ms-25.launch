@@ -1,47 +1,29 @@
 <?xml version="1.0"?>
 <launch>
 
-<!-- Determine this using rosrun pointgrey_camera_driver list_cameras.
-       If not specified, defaults to first camera found. -->
+  <!-- Master variables -->
   <arg name="camera_serial" default="0" />
   <arg name="calibrated" default="0" />
 
+  <!-- Launch our ROS camera node -->
   <group ns="camera">
     <node pkg="nodelet" type="nodelet" name="camera_nodelet_manager" args="manager" />
 
-    <node pkg="nodelet" type="nodelet" name="camera_nodelet"
-          args="load pointgrey_camera_driver/PointGreyCameraNodelet camera_nodelet_manager" >
+    <node pkg="nodelet" type="nodelet" name="camera_nodelet" args="load pointgrey_camera_driver/PointGreyCameraNodelet camera_nodelet_manager" >
       <param name="frame_id" value="camera" />
       <param name="serial" value="$(arg camera_serial)" />
-
-      <!-- When unspecified, the driver will use the default framerate as given by the
-           camera itself. Use this parameter to override that value for cameras capable of
-           other framerates. -->
       <param name="frame_rate" value="60" />
-      
-      <!-- Use the camera_calibration package to create this file -->
-      <param name="camera_info_url" if="$(arg calibrated)"
-             value="file://$(env HOME)/.ros/camera_info/$(arg camera_serial).yaml" />
-    </node>
-
-    <node pkg="nodelet" type="nodelet" name="image_proc_debayer"
-          args="load image_proc/debayer camera_nodelet_manager">
     </node>
   </group>
 
   <!-- imu -->
   <node pkg="microstrain_3dmgx2_imu" type="imu_node" name="microstrain_3dmgx2_node" output="screen">
     <!-- <param name="time_offset" value="-0.040" /> -->
-    <param name="port"  type="string" value="/dev/ttyACM0" />
+    <param name="port"  type="string" value="/dev/ttyACM1" />
     <param name="autostart" type="bool" value="true" />
     <param name="frameid"  type="string" value="imu" />
     <param name="autocalibrate" type="bool" value="true" />
     <param name="angular_velocity_stdev" type="double" value="0.00017" />
-  </node>
-
-  <!-- View the raw output -->
-  <node pkg="image_view" type="image_view" name="xtioncam_view" >
-    <remap from="image" to="/camera/image_raw" />
   </node>
 
 </launch>

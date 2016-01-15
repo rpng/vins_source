@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<launch>
+  
+  <!-- Start up the vi-sensor node -->
+  <node  name="visensor_node" pkg="visensor_node" type="visensor_node" clear_params="true" output="screen">
+    <param name="camRate" value="30"/>
+    <param name="imuRate" value="200"/>
+  </node> 
+
+</launch>
