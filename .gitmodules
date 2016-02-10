@@ -22,3 +22,6 @@
 [submodule "libvisensor"]
 	path = libvisensor
 	url = https://github.com/rpng/libvisensor
+[submodule "usb_cam"]
+	path = usb_cam
+	url = https://github.com/rpng/usb_cam.git
