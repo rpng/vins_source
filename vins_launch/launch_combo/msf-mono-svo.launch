@@ -1,0 +1,32 @@
+<launch>
+
+  <!-- Launch the ps3 driver -->
+  <include file="$(find vins_launch)/launch/usb-ps3.launch" />
+
+  <!-- Launch the imu driver -->
+  <include file="$(find vins_launch)/launch/microstrain-25.launch" />
+
+  <!-- Load up svo -->
+  <node pkg="svo_ros" type="vo" name="svo" clear_params="true" output="log">
+    <param name="cam_topic" value="/camera/image_mono" type="str" />
+    <rosparam file="$(find vins_launch)/config/svo/camera_ps3.yaml" />
+    <rosparam file="$(find vins_launch)/config/svo/vo_accurate.yaml" />
+  </node>
+
+  <!-- Load svo qui -->
+  <!-- <node pkg="rqt_svo" type="rqt_svo" name="rqt_svo" /> -->
+
+  <!-- Start up the msf fusion -->
+  <node name="msf_pose_sensor" pkg="msf_updates" type="pose_sensor" clear_params="true" output="screen">
+    <remap from="msf_core/imu_state_input" to="/imu/data"/>
+    <remap from="msf_updates/pose_with_covariance_input" to="/svo/pose" />
+    <rosparam file="$(find vins_launch)/config/msf/pose_fix_svo.yaml"/>
+  </node>
+
+  <node pkg="rosservice" type="rosservice" name="initialize" args="call --wait /msf_pose_sensor/pose_sensor/initialize_msf_scale 1"/>
+
+  <!-- Launch rvis so we can see what is happening -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find vins_launch)/rvis/svo.rviz" output="log"/>
+
+</launch>
+
