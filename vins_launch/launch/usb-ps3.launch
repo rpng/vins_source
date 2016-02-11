@@ -21,8 +21,10 @@
   </node>
 
   <!-- Display our cropped mono image to the user -->
-<!--   <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+  <!--
+  <node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
     <remap from="image" to="/camera/image_mono"/>
     <param name="autosize" value="false" />
-  </node> -->
+  </node>
+  -->
 </launch>

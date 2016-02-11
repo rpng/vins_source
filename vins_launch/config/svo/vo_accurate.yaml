@@ -1,4 +1,6 @@
 grid_size: 20
 max_n_kfs: 50
 loba_num_iter: 10
-max_fts: 200
+max_fts: 500
+n_pyr_levels: 5
+reproj_thresh: 5

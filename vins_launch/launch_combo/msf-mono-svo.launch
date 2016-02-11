@@ -7,7 +7,7 @@
   <include file="$(find vins_launch)/launch/microstrain-25.launch" />
 
   <!-- Load up svo -->
-  <node pkg="svo_ros" type="vo" name="svo" clear_params="true" output="log">
+  <node pkg="svo_ros" type="vo" name="svo" clear_params="true" output="screen" launch-prefix="xterm -e">
     <param name="cam_topic" value="/camera/image_mono" type="str" />
     <rosparam file="$(find vins_launch)/config/svo/camera_ps3.yaml" />
     <rosparam file="$(find vins_launch)/config/svo/vo_accurate.yaml" />
