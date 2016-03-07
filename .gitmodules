@@ -25,3 +25,6 @@
 [submodule "usb_cam"]
 	path = usb_cam
 	url = https://github.com/rpng/usb_cam.git
+[submodule "imu_vn_100"]
+	path = imu_vn_100
+	url = https://github.com/rpng/imu_vn_100.git
