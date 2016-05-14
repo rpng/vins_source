@@ -11,10 +11,9 @@ This repository has all drivers needed for all rpng vins systems. Please clone t
     * `git submodule update --init --recursive`
 * To add a new driver package (as a submodule)
     * `git submodule add <url-to-git-repo>`
-    * 
-    * 
-    * 
+
 
 #############################
-fixed chameleon 3 resolution issue by:
+To reduce chameleon 3 resolution:
  - in PointGrey.cfg line 89: using "format7_mode1", which will result in resolution 482 x 644.
+ - in nodelet.cpp: uncomment line 100-121.
