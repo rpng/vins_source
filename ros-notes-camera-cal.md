@@ -36,29 +36,24 @@ Our launch file for calibration names calibration-kalibr-static.launch:
 </launch>
 ```
 
-In a separate window, run roscore:
-```
-$roscore
-```
-
 In a separate window, run our launch file (here is under vins_workspace, and maybe need root authority (sudo su first) to run because we need to access serial port):
 ```
-$roslaunch /path/to/calibration-kalibr-static.launch
+roslaunch /path/to/calibration-kalibr-static.launch
 ```
 
 In a separate window run our rosbag recorder (here is under kalibr_workspace, as it will be convenient to read the .bag file in next step):
 ```
-$rosbag record -O <output-file> <topics-to-record>
-$rosbag record -O calibration_static.bag /camera/image_raw
+rosbag record -O <output-file> <topics-to-record>
+rosbag record -O calibration_static.bag /camera/image_raw
 ```
 After moving the grid in front of the camera for an enough time, we end rosbag and get the .bag file in the workspace (here until ending rosbag, "calibration_static" will be a .active file).
 
 We will now run the kalibr suite for muli-camera calibration to get our intrinsic calibration matrix (here is under kalibr_workspace). Kalibr will generate multiple files that show both the error and the properties of the values found. After running the program, we can use this camera calibration to find the IMU to camera matrix.
 
 ```
-$kalibr_calibrate_cameras --bag [filename.bag] --topics [TOPIC_0 ... TOPIC_N] --models [MODEL_0 ... MODEL_N] --target [target.yaml]
+kalibr_calibrate_cameras --bag [filename.bag] --topics [TOPIC_0 ... TOPIC_N] --models [MODEL_0 ... MODEL_N] --target [target.yaml]
 
-$rosrun kalibr kalibr_calibrate_cameras --bag ./calibration_static.bag --topics /camera/image_raw --models pinhole-equi --target ./april_6x6_80x80cm.yaml
+rosrun kalibr kalibr_calibrate_cameras --bag ./calibration_static.bag --topics /camera/image_raw --models pinhole-radtan --target ./april_6x6_80x80cm.yaml
 ```
 
 
@@ -107,13 +102,13 @@ Our launch file for calibration names calibration-kalibr-dynamic.launch:
 
 In a separate window, run our launch file:
 ```
-$roslaunch /path/to/calibration-kalibr-dynamic.launch
+roslaunch /path/to/calibration-kalibr-dynamic.launch
 ```
 
 In a separate window run our rosbag recorder:
 ```
-$rosbag record -O <output-file> <topics-to-record>
-$rosbag record -O calibration_dynamic.bag /camera/image_raw /imu/data
+rosbag record -O <output-file> <topics-to-record>
+rosbag record -O calibration_dynamic.bag /camera/image_raw /imu/data
 ```
 
 
