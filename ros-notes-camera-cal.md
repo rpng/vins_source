@@ -131,7 +131,7 @@ rostopic:                    /imu/data  #Topic data is published to
 
 Run our calibration using the kalibr suite IMU camera calibration method:
 ```
-$kalibr_calibrate_imu_camera --bag [filename.bag] --cam [camchain.yaml] --imu [imu.yaml] --target [target.yaml]
+kalibr_calibrate_imu_camera --bag [filename.bag] --cam [camchain.yaml] --imu [imu.yaml] --target [target.yaml]
 
-$kalibr_calibrate_imu_camera --bag ./calibration_dynamic.bag --cam ./camchain-calibration_static.yaml --imu ./imu.yaml --target ./april_6x6_80x80cm.yaml
+kalibr_calibrate_imu_camera --bag ./calibration_dynamic.bag --cam ./camchain-calibration_static.yaml --imu ./imu.yaml --target ./april_6x6_80x80cm.yaml
 ```
